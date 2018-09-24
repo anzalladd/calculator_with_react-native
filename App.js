@@ -17,7 +17,27 @@ export default class App extends Component{
   }
   render(){
 
+    {/*pengulangan untuk push tombol angka*/}
+    let rows=[]
+    let nums=[[7,8,9],[4,5,6],[1,2,3],[0,'.','=']]
+    for(let i = 0;i<4;i++){
+      let row=[]
+      for(let j=0;j<3;j++){
+        row.push(<TouchableOpacity style={styles.tombol}>
+            <Text style={styles.iniTombol}>{nums[i][j]}</Text>
+          </TouchableOpacity>)
+      }
+      rows.push(<View style={styles.row}>{row}</View>)
+    }
+    let ops=[]
+    let operation=['del','-','*','/']
+    for(let k=0;k<4;k++){
+      ops.push(<TouchableOpacity style={styles.tombol}>
+          <Text style={styles.iniTombol}>{operation[k]}</Text>
+        </TouchableOpacity>)
 
+
+    }
 
     return(
       <View style={styles.container}>
@@ -32,95 +52,15 @@ export default class App extends Component{
 
             {/*ini tombol angka*/}
               <View style={styles.numbers}>
-                {/*ini number baris pertama*/}
-                <View style={styles.row}>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>7</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>8</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>9</Text>
-                  </TouchableOpacity>
+                {rows}
                 </View>
-
-                {/*ini number baris kedua*/}
-                <View style={styles.row}>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>4</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>5</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>6</Text>
-                  </TouchableOpacity>
-                </View>
-
-                {/*ini number baris ketiga*/}
-                <View style={styles.row}>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>1</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>2</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>3</Text>
-                  </TouchableOpacity>
-                </View>
-
-                {/*ini number baris keempat*/}
-                <View style={styles.row}>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>.</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>0</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.tombol}>
-                    <Text style={styles.iniTombol}>=</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
 
               {/*ini tombol operasi*/}
               <View style={styles.operation}>
 
             {/*ini operasi baris pertama*/}
-                <View style={styles.row}>
-                <TouchableOpacity style={styles.tombolOperasi}>
-                  <Text style={styles.iniTombol}>del</Text>
-                </TouchableOpacity>
-                </View>
-
-            {/*ini operasi baris kedua*/}
-                <View style={styles.row}>
-                <TouchableOpacity style={styles.tombolOperasi}>
-                  <Text style={styles.iniTombol}>:</Text>
-                </TouchableOpacity>
-                </View>
-
-            {/*ini operasi baris ketiga*/}
-                <View style={styles.row}>
-                <TouchableOpacity style={styles.tombolOperasi}>
-                  <Text style={styles.iniTombol}>X</Text>
-                </TouchableOpacity>
-                </View>
-
-            {/*ini operasi baris keempat*/}
-                <View style={styles.row}>
-                <TouchableOpacity style={styles.tombolOperasi}>
-                  <Text style={styles.iniTombol}>-</Text>
-                </TouchableOpacity>
-                </View>
-
-            {/*ini operasi baris kelima*/}
-                <View style={styles.row}>
-                <TouchableOpacity style={styles.tombolOperasi}>
-                  <Text style={styles.iniTombol}>+</Text>
-                </TouchableOpacity>
+                <View style={styles.kolom}>
+                {ops}
                 </View>
 
 {/*end view operasi*/}
@@ -141,6 +81,13 @@ const styles = StyleSheet.create({
 
   row:{
     flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+
+  },
+  kolom:{
+    flexDirection: 'column',
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
